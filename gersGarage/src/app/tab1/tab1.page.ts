@@ -9,12 +9,11 @@ import { TokenStorageService } from '../_services/token-storage.service';
 export class Tab1Page {
 
   isLoggedIn = false;
-
+  
   constructor(private tokenStorage: TokenStorageService) {}
 
   logOut(){
     this.tokenStorage.signOut();
-    //this.isLoggedIn = false;
   }
 
 }

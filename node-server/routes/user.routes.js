@@ -25,4 +25,19 @@ module.exports = function (app) {
 		[authJwt.verifyToken, authJwt.isAdmin],
 		controller.adminBoard
 	);
+
+	//Get vehicle maker list
+	app.get('/api/user/makes', controller.userMakes);
+
+	//Get vehicle type list
+	app.get('/api/user/vehicle-type', controller.userVehicleType);
+
+	//Get engine list
+	app.get('/api/user/engine', controller.userEngine);
+
+	//Post a Vehicle
+	app.post('/api/user/vehicle', controller.userVehicle);
+
+	//Post a booking
+	app.post('/api/user/booking', controller.userBooking);
 };

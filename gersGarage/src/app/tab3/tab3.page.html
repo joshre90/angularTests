@@ -21,4 +21,8 @@
       <p>{{ content }}</p>
     </header>
   </div>
+
+  <button ion-button class="my-button" type="button" full (click)="goToAdmin()" [disabled]="!isLoggedIn">
+    Click Me
+</button>
 </ion-content>

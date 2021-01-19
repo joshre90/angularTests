@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Admin
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Admin</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <p>List of services of today</p>
+
+  <ion-button (click)="openCalModal()">
+    <ion-icon name="add" slot="icon-only"></ion-icon>
+    </ion-button>
+</ion-content>

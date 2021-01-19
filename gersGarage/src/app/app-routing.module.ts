@@ -56,6 +56,14 @@ const routes: Routes = [
   {
     path: 'board-user',
     loadChildren: () => import('./pages/board-user/board-user.module').then( m => m.BoardUserPageModule)
+  },
+  {
+    path: 'tab-admin',
+    loadChildren: () => import('./tab-admin/tab-admin.module').then( m => m.TabAdminPageModule)
+  },
+  {
+    path: 'cal-modal',
+    loadChildren: () => import('./pages/cal-modal/cal-modal.module').then( m => m.CalModalPageModule)
   }
 ];
 @NgModule({

@@ -6,12 +6,13 @@ const routes: Routes = [
   {
     path: '',
     component: Tab3Page,
-    children: [
-      {
-        path: 'tab1', 
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-      },
-  ]}
+    // children:  [
+    //   {
+    //   path: 'tab-admin',
+    //   loadChildren: () => import('../tab-admin/tab-admin.module').then(m => m.TabAdminPageModule)
+    //   }
+    // ]
+  }
 ];
 
 @NgModule({
