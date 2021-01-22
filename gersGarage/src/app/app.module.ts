@@ -13,14 +13,19 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './_helper/auth.interceptor';
+import { IonicStorageModule } from '@ionic/storage';
+import { Constants } from './_helper/constants'
+
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule ,HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule ,HttpClientModule, IonicStorageModule.forRoot()],
   providers: [
     authInterceptorProviders,
+    Constants,
+
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

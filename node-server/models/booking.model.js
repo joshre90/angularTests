@@ -10,9 +10,12 @@ const Booking = mongoose.model(
 		Status: String,
 		Date: String,
 
-		id_costumer: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+		id_vehicle: { type: mongoose.Schema.Types.ObjectId, ref: 'Vehicle' },
 		id_mechanic: { type: mongoose.Schema.Types.ObjectId, ref: 'Mechanic' },
-		id_tservice: { type: mongoose.Schema.Types.ObjectId, ref: 'Type_Service' },
+		id_service_type: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Service_Type',
+		},
 	})
 );
 

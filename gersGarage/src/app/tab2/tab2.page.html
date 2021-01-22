@@ -13,7 +13,13 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-content fullscreen class="ion-padding">
+    <ion-button (click)="presentAlertConfirm()" expand="block">Show Alert</ion-button>
+  </ion-content>
+
   <ion-button (click)="bookService()">BOOK</ion-button>
+  <ion-button (click)="saveVehicle()">Vehicle</ion-button>
 
   <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>
+

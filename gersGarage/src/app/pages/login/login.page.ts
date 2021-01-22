@@ -3,6 +3,8 @@ import { AuthService } from '../../_services/auth.service';
 import { TokenStorageService } from '../../_services/token-storage.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +19,9 @@ export class LoginPage implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   credentialsForm: FormGroup;
+  contentVehicle ='';
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private formBuilder: FormBuilder, private route: Router) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private formBuilder: FormBuilder, private route: Router, private storage: Storage,  private userService:UserService) { }
 
   ngOnInit(): void {
 
@@ -44,7 +47,11 @@ export class LoginPage implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         console.log('Roles:',this.roles);
-        this.reloadPage();
+        this.checkVehicle();
+
+        setTimeout(() => {
+          this.reloadPage();
+      }, 300);
       },
       err => {
         this.errorMessage = err.error.message;
@@ -62,8 +69,56 @@ export class LoginPage implements OnInit {
     window.location.reload();
   }
 
+
+
   goToRegister() {
     this.route.navigate(['/register']);
   }
+
+
+  checkVehicle(){
+    this.userService.getVehicleList().subscribe(data => {
+      this.contentVehicle = data;
+      console.log('content2',this.contentVehicle)
+      console.log('content2 Length',this.contentVehicle.length)
+
+      //this.storage.ready().then(() => this.storage.set("hasCars", "true"))
+
+      this.storage.get('hasCars').then(valueStr => {
+        let value = JSON.parse(valueStr);
+    
+         // Modify just that property
+         value = true;
+    
+         // Save the entire data again
+         this.storage.set('hasCars', JSON.stringify(value));
+         this.storage.get('hasCars').then((val) => {
+          console.log('Your car is: ', val);
+        });
+    });
+
+    },
+    err => {
+      this.contentVehicle =  err.error;
+      console.log(this.contentVehicle);
+
+      this.storage.get('hasCars').then(valueStr => {
+        let value = JSON.parse(valueStr);
+    
+         // Modify just that property
+         value = false;
+    
+         // Save the entire data again
+         this.storage.set('hasCars', JSON.stringify(value));
+
+         this.storage.get('hasCars').then((val) => {
+          console.log('Error! Your car is: ', val);
+        });
+    });
+
+    }
+  );
+  }
+
 
 }

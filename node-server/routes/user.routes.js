@@ -35,6 +35,15 @@ module.exports = function (app) {
 	//Get engine list
 	app.get('/api/user/engine', controller.userEngine);
 
+	//Get service types list
+	app.get('/api/user/service-type', controller.userServiceList);
+
+	//Get user list of vehicles
+	app.get('/api/user/vehicle-list/:id', controller.vehicleList);
+
+	//Get history
+	app.get('/api/user/history/:id', controller.userServiceHistory);
+
 	//Post a Vehicle
 	app.post('/api/user/vehicle', controller.userVehicle);
 
